@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* EarthVibe Brand Palette */
+    /* Primary green #4F6F3A → oklch(0.44 0.098 138) */
+    --brand-green: 0.44 0.098 138;
+    /* Light green tint #E9EEE3 → oklch(0.94 0.022 130) */
+    --brand-tint: 0.94 0.022 130;
+    /* Off-white #F6F6F2 → oklch(0.974 0.005 98) */
+    --brand-offwhite: 0.974 0.005 98;
+    /* Dark footer green #1E3318 → oklch(0.25 0.06 138) */
+    --brand-dark: 0.25 0.06 138;
+    /* Gold #F2B01E → oklch(0.76 0.16 75) */
+    --brand-gold: 0.76 0.16 75;
+
+    --background: 0.974 0.005 98;
+    --foreground: 0.22 0.04 138;
+    --card: 1 0 0;
+    --card-foreground: 0.22 0.04 138;
+    --popover: 1 0 0;
+    --popover-foreground: 0.22 0.04 138;
+    --primary: 0.44 0.098 138;
+    --primary-foreground: 0.985 0 0;
+    --secondary: 0.94 0.022 130;
+    --secondary-foreground: 0.44 0.098 138;
+    --muted: 0.94 0.022 130;
+    --muted-foreground: 0.52 0.04 138;
+    --accent: 0.94 0.022 130;
+    --accent-foreground: 0.44 0.098 138;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.88 0.025 130;
+    --input: 0.88 0.025 130;
+    --ring: 0.44 0.098 138;
+    --chart-1: 0.44 0.098 138;
+    --chart-2: 0.76 0.16 75;
+    --chart-3: 0.6 0.118 184.704;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.974 0.005 98;
+    --sidebar-foreground: 0.22 0.04 138;
+    --sidebar-primary: 0.44 0.098 138;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.94 0.022 130;
+    --sidebar-accent-foreground: 0.44 0.098 138;
+    --sidebar-border: 0.88 0.025 130;
+    --sidebar-ring: 0.44 0.098 138;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
