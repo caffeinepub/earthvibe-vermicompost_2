@@ -41,7 +41,8 @@ const PRODUCTS = [
     id: 1n,
     name: "Starter Pack",
     weight: "1 kg",
-    price: 120,
+    mrp: 300,
+    price: 150,
     image: "/assets/uploads/1773907105449-1.png",
     badge: "1 kg",
     popular: false,
@@ -51,7 +52,8 @@ const PRODUCTS = [
     id: 2n,
     name: "Family Pack",
     weight: "5 kg",
-    price: 390,
+    mrp: 390,
+    price: 320,
     image: "/assets/uploads/1773908231636-3.png",
     badge: "5 kg",
     popular: true,
@@ -61,8 +63,9 @@ const PRODUCTS = [
     id: 3n,
     name: "Garden Pro",
     weight: "10 kg",
-    price: 640,
-    image: "/assets/uploads/1773908908861-2.png",
+    mrp: 690,
+    price: 600,
+    image: "/assets/uploads/1773908908861-1-1.png",
     badge: "10 kg",
     popular: false,
     desc: "Best value for larger gardens & farms",
@@ -137,7 +140,6 @@ function Header({ onOrderClick }: { onOrderClick: () => void }) {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-border">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
         <a
           href="#home"
           className="flex items-center gap-2"
@@ -151,7 +153,6 @@ function Header({ onOrderClick }: { onOrderClick: () => void }) {
           </span>
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
@@ -189,7 +190,6 @@ function Header({ onOrderClick }: { onOrderClick: () => void }) {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -239,7 +239,6 @@ function Hero({ onOrderClick }: { onOrderClick: () => void }) {
           "linear-gradient(135deg, oklch(0.44 0.098 138) 0%, oklch(0.36 0.085 138) 50%, oklch(0.30 0.07 138) 100%)",
       }}
     >
-      {/* Decorative circles */}
       <div
         className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10"
         style={{
@@ -316,8 +315,8 @@ function Hero({ onOrderClick }: { onOrderClick: () => void }) {
               style={{ background: "oklch(0.7 0.14 100)" }}
             />
             <img
-              src="/assets/uploads/1773907105449-1.png"
-              alt="EarthVibe 1kg Vermicompost"
+              src="/assets/uploads/1773908908861-1-1.png"
+              alt="EarthVibe 10kg Vermicompost"
               className="relative w-full drop-shadow-2xl object-contain"
             />
           </div>
@@ -397,8 +396,7 @@ function Products({
             Choose Your Pack
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-            Available in three convenient sizes. Bulk discounts applied
-            automatically.
+            Available in three convenient sizes. Special introductory prices.
           </p>
         </motion.div>
 
@@ -440,12 +438,23 @@ function Products({
                 <p className="text-muted-foreground text-sm mt-1 mb-3">
                   {product.desc}
                 </p>
-                <div className="flex items-baseline gap-1 mb-4">
+                <div className="flex items-baseline gap-2 mb-1">
                   <span className="text-3xl font-bold text-primary">
                     ₹{product.price}
                   </span>
                   <span className="text-muted-foreground text-sm">
                     / {product.weight}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-sm text-muted-foreground line-through">
+                    MRP ₹{product.mrp}
+                  </span>
+                  <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                    {Math.round(
+                      ((product.mrp - product.price) / product.mrp) * 100,
+                    )}
+                    % off
                   </span>
                 </div>
                 <Button
@@ -579,7 +588,6 @@ function Contact({
         </motion.div>
 
         <div ref={formRef} className="grid md:grid-cols-2 gap-8 items-start">
-          {/* Inquiry Form */}
           <motion.div
             className="bg-white rounded-xl shadow-card p-6 md:p-8"
             initial={{ opacity: 0, x: -20 }}
@@ -633,7 +641,7 @@ function Contact({
                   <SelectContent>
                     {PRODUCTS.map((p) => (
                       <SelectItem key={p.id.toString()} value={p.id.toString()}>
-                        {p.weight} — ₹{p.price}
+                        {p.weight} — ₹{p.price} (MRP ₹{p.mrp})
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -661,7 +669,6 @@ function Contact({
             </form>
           </motion.div>
 
-          {/* Contact Info */}
           <motion.div
             className="flex flex-col gap-5"
             initial={{ opacity: 0, x: 20 }}
@@ -694,7 +701,7 @@ function Contact({
                 </a>
 
                 <a
-                  href="mailto:Eartvibevermicompost2224@gmail.com"
+                  href="mailto:_earthvibevermicompost@gmail.com"
                   className="flex items-center gap-4 group"
                   data-ocid="contact.link"
                 >
@@ -706,13 +713,13 @@ function Contact({
                       Email
                     </div>
                     <div className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm truncate">
-                      Eartvibevermicompost2224@gmail.com
+                      _earthvibevermicompost@gmail.com
                     </div>
                   </div>
                 </a>
 
                 <a
-                  href="https://instagram.com/Earthvibevermicompost"
+                  href="https://instagram.com/_earthvibevermicompost"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group"
@@ -726,7 +733,7 @@ function Contact({
                       Instagram
                     </div>
                     <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                      @Earthvibevermicompost
+                      @_earthvibevermicompost
                     </div>
                   </div>
                 </a>
@@ -774,7 +781,6 @@ function Footer() {
     <footer className="bg-brand-dark text-white">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
@@ -788,7 +794,6 @@ function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-4 text-white/90">Quick Links</h4>
             <ul className="space-y-2">
@@ -806,18 +811,17 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Follow Us */}
           <div>
             <h4 className="font-semibold mb-4 text-white/90">Follow Us</h4>
             <a
-              href="https://instagram.com/Earthvibevermicompost"
+              href="https://instagram.com/_earthvibevermicompost"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 rounded-full px-4 py-2 text-sm transition-colors"
               data-ocid="footer.link"
             >
               <Instagram className="w-4 h-4" />
-              @Earthvibevermicompost
+              @_earthvibevermicompost
             </a>
             <div className="mt-5">
               <div className="text-white/40 text-xs mb-2">Contact</div>
@@ -829,11 +833,11 @@ function Footer() {
                 +91 9236102943
               </a>
               <a
-                href="mailto:Eartvibevermicompost2224@gmail.com"
+                href="mailto:_earthvibevermicompost@gmail.com"
                 className="block text-white/70 hover:text-white text-sm transition-colors mt-1 truncate"
                 data-ocid="footer.link"
               >
-                Eartvibevermicompost2224@gmail.com
+                _earthvibevermicompost@gmail.com
               </a>
             </div>
           </div>
